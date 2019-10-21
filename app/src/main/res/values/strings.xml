@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SEG2105Project</string>
+    <string name="roles_prompt">Choose a Role</string>
+
+    <string-array name="roles_array">
+        <item>Admin</item>
+        <item>Employee</item>
+        <item>Patient</item>
+    </string-array>
+</resources>
