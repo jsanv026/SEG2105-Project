@@ -39,12 +39,28 @@
             android:textSize="15sp" />
 
         <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="First Name"
+            android:textSize="15sp" />
+
+        <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:text="Password"
             android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Confirm Password"
+            android:textSize="15sp"/>
 
         <Spinner
             android:id="@+id/roles"

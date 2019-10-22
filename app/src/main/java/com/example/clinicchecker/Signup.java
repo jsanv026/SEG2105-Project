@@ -11,6 +11,9 @@ import android.widget.Spinner;
 
 public class Signup extends AppCompatActivity {
 
+    private MyApplication app = (MyApplication) getApplicationContext();
+    private Account[] userAccounts = app.getAccounts();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,28 +22,42 @@ public class Signup extends AppCompatActivity {
 
     public void getInput(View view) {
 
-        String user, pass, role;
+        String email, pass, role, name, passConfirm;
         boolean flag = false;
-        boolean loginSuccess = false;
         boolean foundAccount = false;
+        int index = 0;
 
-        EditText editUser = (EditText) findViewById(R.id.username);
+        EditText editEmail = (EditText) findViewById(R.id.username);
         EditText editPass = (EditText) findViewById(R.id.password);
+        EditText editPassConfirm = (EditText) findViewById(R.id.confirmPassword);
+        EditText editName = (EditText) findViewById(R.id.firstName);
         Spinner roles = (Spinner) findViewById(R.id.roles);
 
         role = roles.getSelectedItem().toString();
-        user = editUser.getText().toString();
+        email = editEmail.getText().toString();
         pass = editPass.getText().toString();
+        passConfirm = editPass.getText().toString();
+        name = editName.getText().toString();
 
-        if (user == null || role == null || pass == null) { return; } // Checking if all fields are filled
+        if (email == null || role == null || pass == null || name == null || passConfirm == null) { return; } // Checking if all fields are filled
+
+        // Checking if username already exists
+
+        for (int i = 0; i < userAccounts.length; i++) {
+
+            if (email.equals(userAccounts[i].getName())) {
+                foundAccount = true;
+                message("Error", "Entered username already exists", "OK");
+                return;
+            }
+        }
 
         // Checking if name input is valid email
 
-        for (int i = 0; i < user.length(); i++) {
+        for (int i = 0; i < email.length(); i++) {
 
-            if (String.valueOf(user.charAt(i)).equals("@")) {
+            if (String.valueOf(email.charAt(i)).equals("@")) {
                 flag = true;
-                message("Nice","Invalid email","OK");
                 break;
             }
         }
@@ -50,31 +67,33 @@ public class Signup extends AppCompatActivity {
             return;
         }
 
-        for (int i = 0; i < userAccounts.length; i++) {
+        if (!foundAccount) {
 
-            if (user.equals(userAccounts[i].getName())) {
-                foundAccount = true;
-                index = i;
-                break;
+            if (pass.equals(passConfirm)) {
+
+                Account acc;
+                int s = app.getSize();
+
+                if (role == "Employee") {
+                    acc = new Employee(email, name, pass, s);
+                    app.add(acc);
+                    message("Success", "Welcome, " + name + " (Employee)", "OK");
+                }
+                else if (role == "Patient") {
+                    acc = new Patient(email, name, pass, s);
+                    app.add(acc);
+                    message("Success", "Welcome, " + name + " (Patient)", "OK");
+                }
+
             }
+
         }
-
-        if (foundAccount) {
-
-            if (userAccounts[index].checkPassword(pass)) {
-
-                loginSuccess = true;
-                message("Login Successful", "Welcome, " + user, "OK");
-
-            }
-
-        } else { message("Login failed", "Unable to find this account. Please try again", "OK"); }
     }
     // Private methods
 
     private void message(String title, String message, String button) {
 
-        AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(Signup.this).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, button,
@@ -84,20 +103,6 @@ public class Signup extends AppCompatActivity {
                     }
                 });
         alertDialog.show();
-
-    }
-
-    private void increaseArraySize() {
-
-        Account[] tmpArray = new Account[userAccounts.length + 1];
-
-        for (int i = 0; i < userAccounts.length; i++) {
-
-            tmpArray[i] = userAccounts[i];
-
-        }
-
-        userAccounts = tmpArray;
 
     }
 }

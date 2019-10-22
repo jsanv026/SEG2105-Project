@@ -4,17 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 public class Login extends AppCompatActivity {
 
-    private Spinner roles;
-    private Account[] userAccounts = new Account[9];
-    private Button login;
-    private int size = 0;
+    private MyApplication app = (MyApplication) getApplicationContext();
+    private Account[] userAccounts = app.getAccounts();
     private int index;
 
     @Override
@@ -32,13 +29,11 @@ public class Login extends AppCompatActivity {
 
         EditText editUser = (EditText) findViewById(R.id.username);
         EditText editPass = (EditText) findViewById(R.id.password);
-        Spinner roles = (Spinner) findViewById(R.id.roles);
 
-        role = roles.getSelectedItem().toString();
         user = editUser.getText().toString();
         pass = editPass.getText().toString();
 
-        if (user == null || role == null || pass == null) { return; } // Checking if all fields are filled
+        if (user == null || pass == null) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
 
         // Checking if name input is valid email
 
@@ -69,14 +64,12 @@ public class Login extends AppCompatActivity {
 
             if (userAccounts[index].checkPassword(pass)) {
 
-                loginSuccess = true;
-                message("Login Successful", "Welcome, " + user, "OK");
+                message("Login Successful", "Welcome, " + user + " (" + userAccounts[index].getRole() + ")", "OK");
 
-            }
+            } else { message("Login failed", "Wrong password given", "OK"); }
 
         } else { message("Login failed", "Unable to find this account. Please try again", "OK"); }
     }
-    // Private methods
 
     private void message(String title, String message, String button) {
 
@@ -93,17 +86,5 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void increaseArraySize() {
 
-        Account[] tmpArray = new Account[userAccounts.length + 1];
-
-        for (int i = 0; i < userAccounts.length; i++) {
-
-            tmpArray[i] = userAccounts[i];
-
-        }
-
-        userAccounts = tmpArray;
-
-    }
 }

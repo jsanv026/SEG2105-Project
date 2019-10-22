@@ -5,14 +5,16 @@ import java.security.NoSuchAlgorithmException;
 
 public class Account {
 
-    private String name, role, password;
-    private int index = 0;
+    private String name, role, password, email;
+    private int index;
 
-    public Account(String name, String role, String password) {
+    public Account(String email, String name, String role, String password, int index) {
 
         this.name = name;
+        this.email = email;
         this.role = role;
         this.password = hashPassword(password);
+        this.index = index;
 
     }
 
@@ -32,5 +34,7 @@ public class Account {
 
     public String getName() { return name; }
     public String getRole() { return role;}
+    public int getIndex() { return index; }
+    public String getEmail() { return email; }
 
 }
