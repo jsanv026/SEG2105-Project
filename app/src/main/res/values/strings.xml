@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ClinicChecker</string>
+    <string name="roles_prompt">Choose a Role</string>
+
+    <string-array name="roles_array">
+        <item>Employee</item>
+        <item>Patient</item>
+    </string-array>
 </resources>

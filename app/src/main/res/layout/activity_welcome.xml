@@ -33,6 +33,7 @@
             style="@android:style/Widget.Button.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="openLogin"
             android:text="Login"
             android:textSize="15sp" />
 
