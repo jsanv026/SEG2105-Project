@@ -25,7 +25,12 @@ public class Account {
         String hash = null;
         try {
             MessageDigest m = MessageDigest.getInstance("SHA-256");
-            m.update(password.getBytes(),0, password.length());
+            byte[] digest = m.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < digest.length; i++) {
+                sb.append(Integer.toString((digest[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            hash = sb.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }

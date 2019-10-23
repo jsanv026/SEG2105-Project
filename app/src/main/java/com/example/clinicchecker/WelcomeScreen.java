@@ -28,4 +28,17 @@ public class WelcomeScreen extends AppCompatActivity {
 
     }
 
+    public void openSignup(View view) {
+
+        Button btn = (Button)findViewById(R.id.btnSignup);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(WelcomeScreen.this, Signup.class));
+            }
+        });
+
+    }
+
 }

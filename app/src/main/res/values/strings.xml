@@ -5,5 +5,6 @@
     <string-array name="roles_array">
         <item>Employee</item>
         <item>Patient</item>
+        <item>Admin</item>
     </string-array>
 </resources>

@@ -46,6 +46,13 @@
             android:text="First Name"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Last Name" />
+
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
@@ -75,8 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_weight="1"
-            android:onClick="getInput"
-            android:text="Login"
+            android:onClick="createAccount"
+            android:text="Signup"
             android:textSize="15sp" />
     </LinearLayout>
 

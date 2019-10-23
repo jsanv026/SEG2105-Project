@@ -20,12 +20,10 @@ public class Signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
     }
 
-    public void getInput(View view) {
+    public void createAccount(View view) {
 
         String email, pass, role, name, passConfirm;
         boolean flag = false;
-        boolean foundAccount = false;
-        int index = 0;
 
         EditText editEmail = (EditText) findViewById(R.id.username);
         EditText editPass = (EditText) findViewById(R.id.password);
@@ -36,17 +34,16 @@ public class Signup extends AppCompatActivity {
         role = roles.getSelectedItem().toString();
         email = editEmail.getText().toString();
         pass = editPass.getText().toString();
-        passConfirm = editPass.getText().toString();
+        passConfirm = editPassConfirm.getText().toString();
         name = editName.getText().toString();
 
-        if (email == null || role == null || pass == null || name == null || passConfirm == null) { return; } // Checking if all fields are filled
+        if (name.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
 
         // Checking if username already exists
 
-        for (int i = 0; i < userAccounts.length; i++) {
+        for (int i = 0; i < singleton.getSize() - 1; i++) {
 
-            if (email.equals(userAccounts[i].getName())) {
-                foundAccount = true;
+            if (email.equals(userAccounts[i].getEmail())) {
                 message("Error", "Entered username already exists", "OK");
                 return;
             }
@@ -56,7 +53,8 @@ public class Signup extends AppCompatActivity {
 
         for (int i = 0; i < email.length(); i++) {
 
-            if (String.valueOf(email.charAt(i)).equals("@")) {
+            String c = Character.toString(email.charAt(i));
+            if (c.equals("@")) {
                 flag = true;
                 break;
             }
@@ -67,27 +65,29 @@ public class Signup extends AppCompatActivity {
             return;
         }
 
-        if (!foundAccount) {
 
-            if (pass.equals(passConfirm)) {
+        if (pass.equals(passConfirm)) {
 
-                Account acc;
-                int s = singleton.getSize();
+            Account acc;
+            int s = singleton.getSize();
 
-                if (role == "Employee") {
-                    acc = new Employee(email, name, pass, s);
-                    singleton.add(acc);
-                    message("Success", "Welcome, " + name + " (Employee)", "OK");
-                }
-                else if (role == "Patient") {
-                    acc = new Patient(email, name, pass, s);
-                    singleton.add(acc);
-                    message("Success", "Welcome, " + name + " (Patient)", "OK");
-                }
-
+            if (role == "Employee") {
+                acc = new Employee(email, name, pass, s);
+                singleton.add(acc);
+                message("Success", "Welcome, " + name + " (Employee)", "OK");
+            }
+            else if (role == "Patient") {
+                acc = new Patient(email, name, pass, s);
+                singleton.add(acc);
+                message("Success", "Welcome, " + name + " (Patient)", "OK");
+            } else if (role == "Admin") {
+                acc = new Admin(email, name, pass, s);
+                singleton.add(acc);
+                message("Success", "Welcome, " + name + " (Admin)", "OK");
             }
 
         }
+
     }
     // Private methods
 

@@ -21,24 +21,24 @@ public class Login extends AppCompatActivity {
 
     public void getInput(View view) {
 
-        String user, pass, role;
+        String email, pass, role;
         boolean flag = false;
         boolean loginSuccess = false;
         boolean foundAccount = false;
 
-        EditText editUser = (EditText) findViewById(R.id.username);
+        EditText editEmail = (EditText) findViewById(R.id.username);
         EditText editPass = (EditText) findViewById(R.id.password);
 
-        user = editUser.getText().toString();
+        email = editEmail.getText().toString();
         pass = editPass.getText().toString();
 
-        if (user.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
+        if (email.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
 
         // Checking if name input is valid email
 
-        for (int i = 0; i < user.length(); i++) {
+        for (int i = 0; i < email.length(); i++) {
 
-            String c = Character.toString(user.charAt(i));
+            String c = Character.toString(email.charAt(i));
             if (c.equals("@")) {
                 flag = true;
                 break;
@@ -50,9 +50,9 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        for (int i = 0; i < userAccounts.length-1; i++) {
+        for (int i = 0; i <= singleton.getSize() - 1; i++) {
 
-            if (user.equals(userAccounts[i].getName())) {
+            if (email.equals(userAccounts[i].getEmail())) {
                 foundAccount = true;
                 index = i;
                 break;
@@ -63,7 +63,11 @@ public class Login extends AppCompatActivity {
 
             if (userAccounts[index].checkPassword(pass)) {
 
-                message("Login Successful", "Welcome, " + user + " (" + userAccounts[index].getRole() + ")", "OK");
+                if (userAccounts[index].getRole() == "Employee" || userAccounts[index].getRole() == "Admin") {
+                    message("Login Successful", "Welcome, " + userAccounts[index].getName() + ". You are logged in as an" + userAccounts[index].getRole() + ")", "OK");
+                } else {
+                    message("Login Successful", "Welcome, " + userAccounts[index].getName() + ". You are logged in as a" + userAccounts[index].getRole() + ")", "OK");
+                }
 
             } else { message("Login failed", "Wrong password given", "OK"); }
 
