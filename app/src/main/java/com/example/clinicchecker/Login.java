@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 public class Login extends AppCompatActivity {
 
-    private MyApplication app = (MyApplication) getApplicationContext();
-    private Account[] userAccounts = app.getAccounts();
+    private Singleton singleton = Singleton.getInstance();
+    private Account[] userAccounts = singleton.getAccounts();
     private int index;
 
     @Override
@@ -33,15 +32,15 @@ public class Login extends AppCompatActivity {
         user = editUser.getText().toString();
         pass = editPass.getText().toString();
 
-        if (user == null || pass == null) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
+        if (user.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
 
         // Checking if name input is valid email
 
         for (int i = 0; i < user.length(); i++) {
 
-            if (String.valueOf(user.charAt(i)).equals("@")) {
+            String c = Character.toString(user.charAt(i));
+            if (c.equals("@")) {
                 flag = true;
-                message("Nice","Invalid email","OK");
                 break;
             }
         }
@@ -51,7 +50,7 @@ public class Login extends AppCompatActivity {
             return;
         }
 
-        for (int i = 0; i < userAccounts.length; i++) {
+        for (int i = 0; i < userAccounts.length-1; i++) {
 
             if (user.equals(userAccounts[i].getName())) {
                 foundAccount = true;

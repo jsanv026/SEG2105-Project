@@ -2,6 +2,6 @@ package com.example.clinicchecker;
 
 public class Admin extends Account{
 
-    public Admin() { super(null, "admin","Admin", "5T5ptQ", 0); }
+    public Admin(String email, String name, String password, int index) { super(email, name,"Admin", password, index); }
 
 }

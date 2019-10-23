@@ -1,17 +1,28 @@
 package com.example.clinicchecker;
 
-import android.app.Application;
+public class Singleton {
 
-public class MyApplication extends Application {
-
-    private static final MyApplication inst = new MyApplication();
-    private Account[] userAccounts = new Account[9];
+    private static Singleton inst;
+    private Account[] userAccounts = new Account[10];
     private int size = 0;
 
-    private MyApplication() { userAccounts[size++] = new Admin(); }
+    private Singleton() {
+
+        userAccounts[size] = new Admin(null, "admin", "5T5ptQ", 0);
+        size++;
+    }
+
     public Account[] getAccounts() { return userAccounts;}
     public void sizeInc() { size++; }
     public int getSize() { return size; }
+
+    public static Singleton getInstance() {
+
+        if (inst == null) { inst = new Singleton(); }
+
+        return inst;
+
+    }
 
     public void add(Account acc) {
 

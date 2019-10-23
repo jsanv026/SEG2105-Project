@@ -11,8 +11,8 @@ import android.widget.Spinner;
 
 public class Signup extends AppCompatActivity {
 
-    private MyApplication app = (MyApplication) getApplicationContext();
-    private Account[] userAccounts = app.getAccounts();
+    private Singleton singleton = Singleton.getInstance();
+    private Account[] userAccounts = singleton.getAccounts();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +72,16 @@ public class Signup extends AppCompatActivity {
             if (pass.equals(passConfirm)) {
 
                 Account acc;
-                int s = app.getSize();
+                int s = singleton.getSize();
 
                 if (role == "Employee") {
                     acc = new Employee(email, name, pass, s);
-                    app.add(acc);
+                    singleton.add(acc);
                     message("Success", "Welcome, " + name + " (Employee)", "OK");
                 }
                 else if (role == "Patient") {
                     acc = new Patient(email, name, pass, s);
-                    app.add(acc);
+                    singleton.add(acc);
                     message("Success", "Welcome, " + name + " (Patient)", "OK");
                 }
 
