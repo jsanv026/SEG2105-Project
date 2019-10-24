@@ -78,16 +78,16 @@ public class Signup extends AppCompatActivity {
             Account acc;
             int s = singleton.getSize();
 
-            if (role == "Employee") {
+            if (role.equals("Employee")) {
                 acc = new Employee(user, email, firstName, lastName, pass, s);
                 singleton.add(acc);
                 message("Success", "Welcome, " + firstName + " (Employee)", "OK");
             }
-            else if (role == "Patient") {
+            else if (role.equals("Patient")) {
                 acc = new Patient(user, email, firstName, lastName, pass, s);
                 singleton.add(acc);
                 message("Success", "Welcome, " + firstName + " (Patient)", "OK");
-            } else if (role == "Admin") {
+            } else if (role.equals("Admin")) {
                 acc = new Admin(user, email, firstName, lastName, pass, s);
                 singleton.add(acc);
                 message("Success", "Welcome, " + firstName + " (Admin)", "OK");
