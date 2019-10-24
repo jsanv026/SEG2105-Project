@@ -21,24 +21,23 @@ public class Login extends AppCompatActivity {
 
     public void getInput(View view) {
 
-        String email, pass, role;
+        String user, pass;
         boolean flag = false;
-        boolean loginSuccess = false;
         boolean foundAccount = false;
 
-        EditText editEmail = (EditText) findViewById(R.id.username);
+        EditText editUser = (EditText) findViewById(R.id.username);
         EditText editPass = (EditText) findViewById(R.id.password);
 
-        email = editEmail.getText().toString();
+        user = editUser.getText().toString();
         pass = editPass.getText().toString();
 
-        if (email.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
+        if (user.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
 
         // Checking if name input is valid email
 
-        for (int i = 0; i < email.length(); i++) {
+        for (int i = 0; i < user.length(); i++) {
 
-            String c = Character.toString(email.charAt(i));
+            String c = Character.toString(user.charAt(i));
             if (c.equals("@")) {
                 flag = true;
                 break;
@@ -52,7 +51,7 @@ public class Login extends AppCompatActivity {
 
         for (int i = 0; i <= singleton.getSize() - 1; i++) {
 
-            if (email.equals(userAccounts[i].getEmail())) {
+            if (user.equals(userAccounts[i].getUser())) {
                 foundAccount = true;
                 index = i;
                 break;
@@ -63,10 +62,12 @@ public class Login extends AppCompatActivity {
 
             if (userAccounts[index].checkPassword(pass)) {
 
-                if (userAccounts[index].getRole() == "Employee" || userAccounts[index].getRole() == "Admin") {
-                    message("Login Successful", "Welcome, " + userAccounts[index].getName() + ". You are logged in as an" + userAccounts[index].getRole() + ")", "OK");
-                } else {
-                    message("Login Successful", "Welcome, " + userAccounts[index].getName() + ". You are logged in as a" + userAccounts[index].getRole() + ")", "OK");
+                if (userAccounts[index].getRole().equals("Employee")) {
+                    message("Login Successful", "Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an" + "Employee" + ")", "OK");
+                } else if (userAccounts[index].getRole().equals("Patient")) {
+                    message("Login Successful", "Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as a" + "Patient" + ")", "OK");
+                } else if (userAccounts[index].getRole().equals("Admin")) {
+                    message("Login Successful", "Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an" + "Admin" + ")", "OK");
                 }
 
             } else { message("Login failed", "Wrong password given", "OK"); }

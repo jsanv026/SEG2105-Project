@@ -22,28 +22,35 @@ public class Signup extends AppCompatActivity {
 
     public void createAccount(View view) {
 
-        String email, pass, role, name, passConfirm;
+        String email, user, pass, role, firstName, lastName, passConfirm;
         boolean flag = false;
 
-        EditText editEmail = (EditText) findViewById(R.id.username);
+        EditText editEmail = (EditText) findViewById(R.id.email);
+        EditText editUser = (EditText) findViewById(R.id.username);
         EditText editPass = (EditText) findViewById(R.id.password);
         EditText editPassConfirm = (EditText) findViewById(R.id.confirmPassword);
-        EditText editName = (EditText) findViewById(R.id.firstName);
+        EditText editFirstName = (EditText) findViewById(R.id.firstName);
+        EditText editLastName = (EditText) findViewById(R.id.lastName);
         Spinner roles = (Spinner) findViewById(R.id.roles);
 
         role = roles.getSelectedItem().toString();
         email = editEmail.getText().toString();
+        user = editUser.getText().toString();
         pass = editPass.getText().toString();
         passConfirm = editPassConfirm.getText().toString();
-        name = editName.getText().toString();
+        firstName = editFirstName.getText().toString();
+        lastName = editLastName.getText().toString();
 
-        if (name.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
+        if (firstName.equals("") || pass.equals("") || lastName.equals("") || email.equals("") || passConfirm.equals("") || user.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
 
         // Checking if username already exists
 
         for (int i = 0; i < singleton.getSize() - 1; i++) {
 
             if (email.equals(userAccounts[i].getEmail())) {
+                message("Error", "Entered email already exists", "OK");
+                return;
+            } else if (user.equals(userAccounts[i].getUser())) {
                 message("Error", "Entered username already exists", "OK");
                 return;
             }
@@ -72,20 +79,22 @@ public class Signup extends AppCompatActivity {
             int s = singleton.getSize();
 
             if (role == "Employee") {
-                acc = new Employee(email, name, pass, s);
+                acc = new Employee(user, email, firstName, lastName, pass, s);
                 singleton.add(acc);
-                message("Success", "Welcome, " + name + " (Employee)", "OK");
+                message("Success", "Welcome, " + firstName + " (Employee)", "OK");
             }
             else if (role == "Patient") {
-                acc = new Patient(email, name, pass, s);
+                acc = new Patient(user, email, firstName, lastName, pass, s);
                 singleton.add(acc);
-                message("Success", "Welcome, " + name + " (Patient)", "OK");
+                message("Success", "Welcome, " + firstName + " (Patient)", "OK");
             } else if (role == "Admin") {
-                acc = new Admin(email, name, pass, s);
+                acc = new Admin(user, email, firstName, lastName, pass, s);
                 singleton.add(acc);
-                message("Success", "Welcome, " + name + " (Admin)", "OK");
+                message("Success", "Welcome, " + firstName + " (Admin)", "OK");
             }
 
+        } else {
+            message("Error", "Passwords do not match", "OK");
         }
 
     }

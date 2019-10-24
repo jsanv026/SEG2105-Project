@@ -8,7 +8,7 @@ public class Singleton {
 
     private Singleton() {
 
-        userAccounts[size] = new Admin("admin@uottawa.ca", "admin", "5T5ptQ", 0);
+        userAccounts[size] = new Admin("admin",null, "admin", null,"5T5ptQ", 0);
         size++;
     }
 

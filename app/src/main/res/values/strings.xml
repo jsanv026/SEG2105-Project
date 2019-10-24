@@ -3,8 +3,8 @@
     <string name="roles_prompt">Choose a Role</string>
 
     <string-array name="roles_array">
+        <item>Admin</item>
         <item>Employee</item>
         <item>Patient</item>
-        <item>Admin</item>
     </string-array>
 </resources>
