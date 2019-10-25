@@ -44,7 +44,7 @@ public class Signup extends AppCompatActivity {
 
         // Checking if username already exists
 
-        for (int i = 0; i < singleton.getAccounts().getSize() - 1; i++) {
+        for (int i = 0; i < singleton.getAccounts().getSize(); i++) {
 
             if (email.equals(userAccounts[i].getEmail())) {
                 toastMessage("Entered email already exists");
