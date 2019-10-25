@@ -1,18 +1,17 @@
 package com.example.clinicchecker;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class Signup extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
-    private Account[] userAccounts = singleton.getAccounts();
+    private Account[] userAccounts = singleton.getAccounts().getAccounts();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +40,17 @@ public class Signup extends AppCompatActivity {
         firstName = editFirstName.getText().toString();
         lastName = editLastName.getText().toString();
 
-        if (firstName.equals("") || pass.equals("") || lastName.equals("") || email.equals("") || passConfirm.equals("") || user.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
+        if (firstName.equals("") || pass.equals("") || lastName.equals("") || email.equals("") || passConfirm.equals("") || user.equals("")) { toastMessage("Invalid login fields"); return; } // Checking if all fields are filled
 
         // Checking if username already exists
 
-        for (int i = 0; i < singleton.getSize() - 1; i++) {
+        for (int i = 0; i < singleton.getAccounts().getSize() - 1; i++) {
 
             if (email.equals(userAccounts[i].getEmail())) {
-                message("Error", "Entered email already exists", "OK");
+                toastMessage("Entered email already exists");
                 return;
             } else if (user.equals(userAccounts[i].getUser())) {
-                message("Error", "Entered username already exists", "OK");
+                toastMessage("Entered username already exists");
                 return;
             }
         }
@@ -68,7 +67,7 @@ public class Signup extends AppCompatActivity {
         }
 
         if (flag == false) {
-            message("Login failed","Invalid email","OK");
+            toastMessage("Invalid email");
             return;
         }
 
@@ -76,42 +75,33 @@ public class Signup extends AppCompatActivity {
         if (pass.equals(passConfirm)) {
 
             Account acc;
-            int s = singleton.getSize();
 
             if (role.equals("Employee")) {
-                acc = new Employee(user, email, firstName, lastName, pass, s);
-                singleton.add(acc);
-                message("Success", "Welcome, " + firstName + " (Employee)", "OK");
+                acc = new Employee(user, email, firstName, lastName, pass);
+                singleton.getAccounts().add(acc);
+                toastMessage("Welcome, " + firstName + ". You are logged in as an employee");
+                startActivity(new Intent(Signup.this, WelcomeScreen.class));
             }
             else if (role.equals("Patient")) {
-                acc = new Patient(user, email, firstName, lastName, pass, s);
-                singleton.add(acc);
-                message("Success", "Welcome, " + firstName + " (Patient)", "OK");
+                acc = new Patient(user, email, firstName, lastName, pass);
+                singleton.getAccounts().add(acc);
+                toastMessage("Welcome, " + firstName + ". You are logged in as a patient");
+                startActivity(new Intent(Signup.this, WelcomeScreen.class));
             } else if (role.equals("Admin")) {
-                acc = new Admin(user, email, firstName, lastName, pass, s);
-                singleton.add(acc);
-                message("Success", "Welcome, " + firstName + " (Admin)", "OK");
+                acc = new Admin(user, email, firstName, lastName, pass);
+                singleton.getAccounts().add(acc);
+                toastMessage("Welcome, " + firstName + ". You are logged in as an admin");
+                startActivity(new Intent(Signup.this, AccountList.class));
             }
 
         } else {
-            message("Error", "Passwords do not match", "OK");
+            toastMessage("Passwords do not match");
         }
 
     }
-    // Private methods
 
-    private void message(String title, String message, String button) {
+    public void openWelcomeScreen(View view) { startActivity(new Intent(Signup.this, WelcomeScreen.class)); }
 
-        AlertDialog alertDialog = new AlertDialog.Builder(Signup.this).create();
-        alertDialog.setTitle(title);
-        alertDialog.setMessage(message);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, button,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+    private void toastMessage(String message) { Toast.makeText(Signup.this, message, Toast.LENGTH_SHORT).show(); }
 
-    }
 }

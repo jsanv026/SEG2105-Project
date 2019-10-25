@@ -1,16 +1,17 @@
 package com.example.clinicchecker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
-    private Account[] userAccounts = singleton.getAccounts();
+    private Account[] userAccounts = singleton.getAccounts().getAccounts();
     private int index;
 
     @Override
@@ -31,25 +32,9 @@ public class Login extends AppCompatActivity {
         user = editUser.getText().toString();
         pass = editPass.getText().toString();
 
-        if (user.equals("") || pass.equals("")) { message("Login Failed", "Invalid login fields", "OK"); return; } // Checking if all fields are filled
+        if (user.equals("") || pass.equals("")) { toastMessage("Invalid login fields"); return; } // Checking if all fields are filled
 
-        // Checking if name input is valid email
-
-        for (int i = 0; i < user.length(); i++) {
-
-            String c = Character.toString(user.charAt(i));
-            if (c.equals("@")) {
-                flag = true;
-                break;
-            }
-        }
-
-        if (flag == false) {
-            message("Login failed","Invalid email","OK");
-            return;
-        }
-
-        for (int i = 0; i <= singleton.getSize() - 1; i++) {
+        for (int i = 0; i < singleton.getAccounts().getSize(); i++) {
 
             if (user.equals(userAccounts[i].getUser())) {
                 foundAccount = true;
@@ -63,32 +48,23 @@ public class Login extends AppCompatActivity {
             if (userAccounts[index].checkPassword(pass)) {
 
                 if (userAccounts[index].getRole().equals("Employee")) {
-                    message("Login Successful", "Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an" + "Employee" + ")", "OK");
+                    toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Employee");
+                    startActivity(new Intent(Login.this, WelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Patient")) {
-                    message("Login Successful", "Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as a" + "Patient" + ")", "OK");
+                    toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Patient");
+                    startActivity(new Intent(Login.this, WelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Admin")) {
-                    message("Login Successful", "Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an" + "Admin" + ")", "OK");
+                    toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Admin");
+                    startActivity(new Intent(Login.this, AccountList.class));
                 }
 
-            } else { message("Login failed", "Wrong password given", "OK"); }
+            } else { toastMessage("Wrong password given"); }
 
-        } else { message("Login failed", "Unable to find this account. Please try again", "OK"); }
+        } else { toastMessage("Unable to find this account. Please try again"); toastMessage(userAccounts[index].toString()); }
     }
 
-    private void message(String title, String message, String button) {
+    public void openWelcomeScreen(View view) { startActivity(new Intent(Login.this, WelcomeScreen.class)); }
 
-        AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();
-        alertDialog.setTitle(title);
-        alertDialog.setMessage(message);
-        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, button,
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
-
-    }
-
+    private void toastMessage(String message) { Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show(); }
 
 }

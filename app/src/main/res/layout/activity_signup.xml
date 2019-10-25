@@ -9,9 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent">
+        android:orientation="vertical">
 
         <Space
             android:layout_width="match_parent"
@@ -33,6 +31,15 @@
             android:layout_height="20dp"
             android:layout_weight="1" />
 
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
@@ -40,18 +47,19 @@
             android:layout_weight="1"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/txtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Email"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/txtUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Username"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
             android:id="@+id/username"
@@ -60,18 +68,19 @@
             android:layout_weight="1"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/txtUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Username"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/txtFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="First Name"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
             android:id="@+id/firstName"
@@ -80,18 +89,19 @@
             android:layout_weight="1"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/txtFirstName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="First Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/txtLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Last Name"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
             android:id="@+id/lastName"
@@ -100,25 +110,10 @@
             android:layout_weight="1"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/txtLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Last Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtPassword"
@@ -126,19 +121,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Password"
+            android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:inputType="textPassword" />
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/confirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtConfirmPassword"
@@ -146,11 +143,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Confirm Password"
+            android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:inputType="textPassword"/>
+
+        <CheckBox
+            android:id="@+id/chkRevealPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Reveal Passwords" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="20dp"
             android:layout_weight="1" />
 
         <TextView
@@ -177,6 +190,15 @@
             android:onClick="createAccount"
             android:text="Signup"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="openWelcomeScreen"
+            android:text="Back" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

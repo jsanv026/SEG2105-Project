@@ -9,9 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent">
+        tools:layout_editor_absoluteX="10dp">
 
         <Space
             android:layout_width="match_parent"
@@ -25,26 +24,43 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="30sp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="40dp"
             android:layout_weight="1" />
-
-        <EditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Username"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:maxLines="1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Password"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
@@ -52,19 +68,20 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:textSize="15sp" />
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:maxLines="1" />
 
-        <TextView
-            android:id="@+id/txtPassword"
+        <CheckBox
+            android:id="@+id/chkRevealPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Password"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            android:text="Reveal Password" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:layout_weight="1" />
 
         <Button
@@ -75,6 +92,14 @@
             android:onClick="getInput"
             android:text="Login"
             android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="openWelcomeScreen"
+            android:text="Back" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
