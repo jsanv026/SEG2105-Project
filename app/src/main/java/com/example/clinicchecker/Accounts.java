@@ -5,6 +5,7 @@ public class Accounts {
     private Account[] userAccounts;
     private int size = 0;
     private int capacity;
+    private Singleton singleton = Singleton.getInstance();
 
     public Accounts(int capacity) {
 
@@ -17,10 +18,42 @@ public class Accounts {
 
     public void add(Account acc) {
 
-        if (size == capacity) { increaseArraySize(); }
+        int index = 0;
 
-        userAccounts[size] = acc;
+        for (int i = 0; i < userAccounts.length - 1; i++) {
+
+            if (userAccounts[i] == null) {
+                userAccounts[size++] = acc;
+                return;
+            }
+
+            index = i;
+
+        }
+
+        increaseArraySize();
+        userAccounts[index + 1] = acc;
         size++;
+
+    }
+
+    public boolean delete(Account acc) {
+
+        Singleton singleton = Singleton.getInstance();
+        Account[] tmpUserAccounts = singleton.getAccounts().getAccounts();
+
+        if (acc.getRole().equals("Admin")) { return false; }
+
+        else {
+
+            for (int i = 0; i < tmpUserAccounts.length - 1; i++) {
+
+                if (tmpUserAccounts[i].equals(acc)) { tmpUserAccounts[i] = null; }
+
+            }
+        }
+
+        return true;
 
     }
 

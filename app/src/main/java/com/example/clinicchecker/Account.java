@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class Account {
 
     private String firstName, lastName, role, password, email, username;
+    private boolean isDeletable;
 
     public Account(String username, String email, String firstName, String lastName, String role, String password) {
 
@@ -26,6 +27,13 @@ public class Account {
                 "\nLast Name: " + lastName +
                 "\nRole: " + role;
 
+    }
+    
+    public boolean equals(Account acc) {
+
+        if (acc.getEmail().equals(email)) { return true; }
+
+        return false;
     }
 
     public boolean checkPassword(String input) { return password.equals(hashPassword(input)); }
@@ -52,5 +60,6 @@ public class Account {
     public String getRole() { return role;}
     public String getUser() { return username; }
     public String getEmail() { return email; }
+    public boolean isDeletable() { return isDeletable; }
 
 }
