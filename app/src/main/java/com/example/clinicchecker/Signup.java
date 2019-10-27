@@ -74,7 +74,7 @@ public class Signup extends AppCompatActivity {
 
         if (pass.equals(passConfirm)) {
 
-            Account acc;
+            Account acc = null;
 
             if (role.equals("Employee")) {
                 acc = new Employee(user, email, firstName, lastName, pass);
@@ -91,9 +91,10 @@ public class Signup extends AppCompatActivity {
                 acc = new Admin(user, email, firstName, lastName, pass);
                 singleton.getAccounts().add(acc);
                 toastMessage("Welcome, " + firstName + ". You are logged in as an admin");
-                startActivity(new Intent(Signup.this, AccountList.class));
+                startActivity(new Intent(Signup.this, AdminMain.class));
             }
 
+            singleton.setCurrentLoggedIn(acc.toString());
         } else {
             toastMessage("Passwords do not match");
         }

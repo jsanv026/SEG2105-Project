@@ -28,13 +28,6 @@ public class Account {
                 "\nRole: " + role;
 
     }
-    
-    public boolean equals(Account acc) {
-
-        if (acc.getEmail().equals(email)) { return true; }
-
-        return false;
-    }
 
     public boolean checkPassword(String input) { return password.equals(hashPassword(input)); }
 

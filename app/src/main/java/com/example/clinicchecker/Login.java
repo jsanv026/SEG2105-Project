@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.clinicchecker.ui.home.HomeFragment;
+
 public class Login extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
@@ -55,8 +57,10 @@ public class Login extends AppCompatActivity {
                     startActivity(new Intent(Login.this, WelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Admin")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Admin");
-                    startActivity(new Intent(Login.this, AccountList.class));
+                    startActivity(new Intent(Login.this, AdminMain.class));
                 }
+
+                singleton.setCurrentLoggedIn(userAccounts[index].toString());
 
             } else { toastMessage("Wrong password given"); }
 

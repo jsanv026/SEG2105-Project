@@ -11,8 +11,10 @@ public class Accounts {
 
         this.capacity = capacity;
         userAccounts = new Account[capacity];
-        userAccounts[size] = new Admin("admin",null, "admin", null,"5T5ptQ");
-        size++;
+        this.add(new Admin("admin",null, "admin", null,"5T5ptQ"));
+        this.add(new Employee("A",null, "a", "a","a"));
+        this.add(new Patient("B",null, "b", "b","b"));
+        this.add(new Patient("C",null, "c", "c","c"));
 
     }
 
@@ -48,7 +50,9 @@ public class Accounts {
 
             for (int i = 0; i < tmpUserAccounts.length - 1; i++) {
 
-                if (tmpUserAccounts[i].equals(acc)) { tmpUserAccounts[i] = null; }
+                if (tmpUserAccounts[i] != null) {
+                    if (tmpUserAccounts[i].equals(acc)) { tmpUserAccounts[i] = null; }
+                }
 
             }
         }

@@ -44,8 +44,8 @@ public class AccountList extends AppCompatActivity {
                     if (userAccounts[index].isDeletable()) {
 
                         accClass.delete(userAccounts[index]);
-                        startActivity(new Intent(AccountList.this, AccountList.class));
-
+                        finish();
+                        startActivity(getIntent());
 
                     } else { toastMessage("Admin accounts cannot be deleted"); }
                 }

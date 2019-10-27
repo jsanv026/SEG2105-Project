@@ -7,4 +7,8 @@
         <item>Employee</item>
         <item>Patient</item>
     </string-array>
+    <string name="title_activity_admin_main">AdminMain</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
