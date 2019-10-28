@@ -46,12 +46,19 @@ public class Signup extends AppCompatActivity {
 
         for (int i = 0; i < singleton.getAccounts().getSize(); i++) {
 
-            if (email.equals(userAccounts[i].getEmail())) {
-                toastMessage("Entered email already exists");
-                return;
-            } else if (user.equals(userAccounts[i].getUser())) {
-                toastMessage("Entered username already exists");
-                return;
+            try {
+                if (email.equals(userAccounts[i].getEmail())) {
+                    toastMessage("Entered email already exists");
+                    return;
+                } else if (user.equals(userAccounts[i].getUser())) {
+                    toastMessage("Entered username already exists");
+                    return;
+                }
+
+            } catch (NullPointerException e) {
+
+
+
             }
         }
 

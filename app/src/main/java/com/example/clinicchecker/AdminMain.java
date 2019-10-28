@@ -34,27 +34,27 @@ public class AdminMain extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.accInfo, R.id.services, R.id.accManagement).build();
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.home, R.id.services, R.id.accInfo).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-//
-//        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//            public boolean onNavigationItemSelected(MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.accInfo:
-//                        Toast.makeText(AdminMain.this, "Recents", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.services:
-//                        Toast.makeText(AdminMain.this, "Favorites", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.accManagement:
-//                        Toast.makeText(AdminMain.this, "Nearby", Toast.LENGTH_SHORT).show();
-//                        break;                }
-//                return true;
-//            }
-//        });
+
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+            public boolean onNavigationItemSelected(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.accInfo:
+                        Toast.makeText(AdminMain.this, "Recents", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.services:
+                        Toast.makeText(AdminMain.this, "Favorites", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.accManagement:
+                        Toast.makeText(AdminMain.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        break;                }
+                return true;
+            }
+        });
 
         txtAccounts = (TextView) findViewById(R.id.txtAccounts);
 
@@ -131,7 +131,7 @@ public class AdminMain extends AppCompatActivity {
 
     }
 
-    public void openWelcomeScreen(View view) { startActivity(new Intent(AdminMain.this, WelcomeScreen.class)); }
+    public void openWelcomeScreen(View view) { startActivity(new Intent(AdminMain.this, WelcomeScreen.class)); toastMessage("Successfully logged out"); }
 
     private void toastMessage(String message) { Toast.makeText(AdminMain.this, message, Toast.LENGTH_SHORT).show(); }
 }
