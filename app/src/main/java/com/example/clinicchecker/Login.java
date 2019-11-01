@@ -27,13 +27,19 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         revealPasswords = (CheckBox) findViewById(R.id.chkRevealPass);
+        editPass = (EditText) findViewById(R.id.password);
+
+        editPass.setInputType(129);
 
         revealPasswords.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked) {
-                    editPass.setInputType(InputType.TYPE_CLASS_TEXT |
-                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+
+                if(!isChecked) {
+                    editPass.setInputType(129);
+                    editPass.setSelection(editPass.getText().length());
+                } else {
+                    editPass.setInputType(1);
                     editPass.setSelection(editPass.getText().length());
                 }
 

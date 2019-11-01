@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -12,11 +14,39 @@ public class Signup extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
     private Account[] userAccounts = singleton.getAccounts().getAccounts();
+    private CheckBox revealPasswords;
+    private EditText editPass;
+    private EditText editPassConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        revealPasswords = (CheckBox) findViewById(R.id.chkRevealPass);
+        editPass = (EditText) findViewById(R.id.password);
+        editPassConfirm = (EditText) findViewById(R.id.confirmPassword);
+
+        editPass.setInputType(129);
+        editPassConfirm.setInputType(129);
+
+        revealPasswords.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(!isChecked) {
+                    editPass.setInputType(129);
+                    editPass.setSelection(editPass.getText().length());
+                    editPassConfirm.setInputType(129);
+                    editPassConfirm.setSelection(editPassConfirm.getText().length());
+                } else {
+                    editPass.setInputType(1);
+                    editPass.setSelection(editPass.getText().length());
+                    editPassConfirm.setInputType(1);
+                    editPassConfirm.setSelection(editPassConfirm.getText().length());
+                }
+            }
+        }
+        );
     }
 
     public void createAccount(View view) {
@@ -26,8 +56,8 @@ public class Signup extends AppCompatActivity {
 
         EditText editEmail = (EditText) findViewById(R.id.email);
         EditText editUser = (EditText) findViewById(R.id.username);
-        EditText editPass = (EditText) findViewById(R.id.password);
-        EditText editPassConfirm = (EditText) findViewById(R.id.confirmPassword);
+        editPass = (EditText) findViewById(R.id.password);
+        editPassConfirm = (EditText) findViewById(R.id.confirmPassword);
         EditText editFirstName = (EditText) findViewById(R.id.firstName);
         EditText editLastName = (EditText) findViewById(R.id.lastName);
         Spinner roles = (Spinner) findViewById(R.id.roles);
