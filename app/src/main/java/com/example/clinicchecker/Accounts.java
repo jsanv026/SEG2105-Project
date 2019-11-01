@@ -15,6 +15,8 @@ public class Accounts {
         this.add(new Employee("A",null, "a", "a","a"));
         this.add(new Patient("B",null, "b", "b","b"));
         this.add(new Patient("C",null, "c", "c","c"));
+        this.add(new Patient("D",null, "d", "d","d"));
+        this.add(new Patient("E",null, "e", "e","e"));
 
     }
 

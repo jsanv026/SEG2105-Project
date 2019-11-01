@@ -4,53 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteY="56dp">
-
-        <LinearLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtAccounts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="20"
-                android:paddingLeft="30dp"
-                android:scrollbars="vertical"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:layout_weight="1" />
-
-        </LinearLayout>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="20"
-            android:scrollbars="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:id="@+id/layoutButtons"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtAccounts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
+                <LinearLayout
+                    android:id="@+id/layoutButtons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"></LinearLayout>
+
+            </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="logout"
+            android:text="Logout" />
 
     </LinearLayout>
 
@@ -65,7 +62,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     <fragment
         android:id="@+id/nav_host_fragment"

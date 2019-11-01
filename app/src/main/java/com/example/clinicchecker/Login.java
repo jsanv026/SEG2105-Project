@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.text.InputType;
 import androidx.fragment.app.*;
 
 
@@ -16,11 +19,27 @@ public class Login extends AppCompatActivity {
     private Singleton singleton = Singleton.getInstance();
     private Account[] userAccounts = singleton.getAccounts().getAccounts();
     private int index;
+    private CheckBox revealPasswords;
+    private EditText editPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        revealPasswords = (CheckBox) findViewById(R.id.chkRevealPass);
+
+        revealPasswords.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    editPass.setInputType(InputType.TYPE_CLASS_TEXT |
+                            InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    editPass.setSelection(editPass.getText().length());
+                }
+
+            }
+        }
+        );
     }
 
     public void getInput(View view) {
@@ -30,7 +49,7 @@ public class Login extends AppCompatActivity {
         boolean foundAccount = false;
 
         EditText editUser = (EditText) findViewById(R.id.username);
-        EditText editPass = (EditText) findViewById(R.id.password);
+        editPass = (EditText) findViewById(R.id.password);
 
         user = editUser.getText().toString();
         pass = editPass.getText().toString();

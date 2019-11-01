@@ -6,6 +6,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.*;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -59,9 +60,6 @@ public class AdminMain extends AppCompatActivity {
         txtAccounts = (TextView) findViewById(R.id.txtAccounts);
 
 
-
-        txtAccounts.setMovementMethod(new ScrollingMovementMethod());
-
         int rank = 1;
 
         for(int i = 0; i < singleton.getAccounts().getSize(); i++) {
@@ -77,10 +75,10 @@ public class AdminMain extends AppCompatActivity {
                 myButton.setText("Delete " + userAccounts[i].getFirstName() + "'s account");
                 myButton.setBackgroundColor(Color.LTGRAY);
 
-                LinearLayout llBtn = (LinearLayout)findViewById(R.id.layout);
+                LinearLayout llBtn = (LinearLayout) findViewById(R.id.layoutButtons);
                 llBtn.addView(myButton);
                 Space spc = new Space(this);
-                spc.setMinimumHeight(15);
+                spc.setMinimumHeight(230);
                 llBtn.addView(spc);
 
                 myButton.setOnClickListener(new View.OnClickListener() {
@@ -118,22 +116,28 @@ public class AdminMain extends AppCompatActivity {
 
         }
 
-        Button myButton = new Button(this);
-        myButton.setText("Logout");
-        myButton.setBackgroundColor(Color.LTGRAY);
-        LinearLayout ll = (LinearLayout)findViewById(R.id.layout);
-        ll.addView(myButton);
-        myButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(AdminMain.this, WelcomeScreen.class));
-            }
-        });
+
 
     }
 
     public void openWelcomeScreen(View view) { startActivity(new Intent(AdminMain.this, WelcomeScreen.class)); toastMessage("Successfully logged out"); }
 
     private void toastMessage(String message) { Toast.makeText(AdminMain.this, message, Toast.LENGTH_SHORT).show(); }
+
+    public void logout(View v) {
+
+//        Button myLogoutButton = new Button(this);
+//        myLogoutButton.setText("Logout");
+//        myLogoutButton.setBackgroundColor(Color.LTGRAY);
+//        LinearLayout ll = (LinearLayout) findViewById(R.id.layoutLogout);
+//        ll.addView(myLogoutButton);
+        v.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(AdminMain.this, WelcomeScreen.class));
+            }
+        });
+
+    }
 }
 
 
