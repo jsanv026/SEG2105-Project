@@ -9,12 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import android.graphics.Color;
 import android.widget.Space;
 import java.*;
@@ -29,36 +24,14 @@ public class AdminMain extends AppCompatActivity {
     private boolean confirm = false;
     private String confirmName;
     private Button tmpBtn;
+    private View home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.home, R.id.services, R.id.accInfo).build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(navView, navController);
-
-        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.accInfo:
-                        Toast.makeText(AdminMain.this, "Recents", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.services:
-                        Toast.makeText(AdminMain.this, "Favorites", Toast.LENGTH_SHORT).show();
-                        break;
-                    case R.id.accManagement:
-                        Toast.makeText(AdminMain.this, "Nearby", Toast.LENGTH_SHORT).show();
-                        break;                }
-                return true;
-            }
-        });
 
         txtAccounts = (TextView) findViewById(R.id.txtAccounts);
-
 
         int rank = 1;
 
@@ -112,7 +85,6 @@ public class AdminMain extends AppCompatActivity {
 
                 txtAccounts.append("\n\n");
             }
-
 
         }
 

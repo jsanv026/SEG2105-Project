@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AdminMainScreen"
+            android:label="@string/title_activity_admin_main_screen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".AdminMain"
-            android:label="@string/title_activity_admin_main"></activity>
-        <activity android:name=".MainMenu" />
+            android:label="@string/title_activity_admin_main" />
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
         <activity android:name=".WelcomeScreen">

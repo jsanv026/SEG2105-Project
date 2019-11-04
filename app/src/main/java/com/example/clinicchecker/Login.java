@@ -11,9 +11,6 @@ import android.widget.CompoundButton;
 import android.text.InputType;
 import androidx.fragment.app.*;
 
-
-import com.example.clinicchecker.ui.home.HomeFragment;
-
 public class Login extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
@@ -83,7 +80,7 @@ public class Login extends AppCompatActivity {
                     startActivity(new Intent(Login.this, WelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Admin")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Admin");
-                    startActivity(new Intent(Login.this, AdminMain.class));
+                    startActivity(new Intent(Login.this, AdminMainScreen.class));
                 }
 
                 singleton.setCurrentLoggedIn(userAccounts[index].toString());
