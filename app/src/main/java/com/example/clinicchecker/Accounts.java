@@ -63,6 +63,35 @@ public class Accounts {
 
     }
 
+    public boolean forceDelete(Account acc) {
+
+        Singleton singleton = Singleton.getInstance();
+        Account[] tmpUserAccounts = singleton.getAccounts().getAccounts();
+        for (int i = 0; i < tmpUserAccounts.length - 1; i++) {
+
+            if (tmpUserAccounts[i] != null) {
+                if (tmpUserAccounts[i].equals(acc)) { tmpUserAccounts[i] = null; }
+            }
+
+        }
+
+        return true;
+
+    }
+
+    public boolean exists(Account acc) {
+
+        Singleton singleton = Singleton.getInstance();
+        Account[] tmpUserAccounts = singleton.getAccounts().getAccounts();
+        for (int i = 0; i < tmpUserAccounts.length - 1; i++) {
+
+            if (acc.equals(tmpUserAccounts[i])) { return true; }
+
+        }
+
+        return false;
+    }
+
     public Account[] getAccounts() { return userAccounts;}
     public int getSize() { return size; }
 

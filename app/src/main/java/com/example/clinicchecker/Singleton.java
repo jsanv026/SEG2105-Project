@@ -4,7 +4,7 @@ public class Singleton {
 
     private static Singleton inst;
     private static Accounts accounts = new Accounts(10);
-    private static String currentLoggedIn;
+    private static Account currentLoggedIn;
     private static Services services = new Services(10);
 
     private Singleton() { }
@@ -18,7 +18,7 @@ public class Singleton {
     }
 
     public static Accounts getAccounts() { return accounts; }
-    public static void setCurrentLoggedIn(String s) { currentLoggedIn = s; }
-    public static String getCurrentLoggedIn() { return currentLoggedIn; }
+    public static void setCurrentLoggedIn(Account s) { currentLoggedIn = s; }
+    public static Account getCurrentLoggedIn() { return currentLoggedIn; }
     public static Services getServices() { return services; }
 }

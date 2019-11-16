@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ClinicChecker</string>
+    <string name="app_name">Clinic Checker</string>
     <string name="roles_prompt">Choose a Role</string>
 
     <string-array name="roles_array">

@@ -2,43 +2,18 @@ package com.example.clinicchecker;
 
 public class Services {
 
-    String[] services;
+    Service[] services;
     String[] category;
     int sizeCategory, sizeServices = 0;
 
     public Services(int capacity) {
 
-        services = new String[capacity];
-        category = new String[capacity];
+        services = new Service[capacity];
+        category = new String[3];
 
     }
 
-    public boolean addCategory(String categoryElem) {
-
-        for (int i = 0; i < category.length; i++) {
-
-            if (category[i].equals(categoryElem)) {
-                return false;
-            }
-
-        }
-
-        for (int i = 0; i < category.length; i++) {
-
-            if (category[i] == null) {
-                category[i] = categoryElem;
-                sizeCategory++;
-                return true;
-            }
-
-        }
-
-        increaseArraySize(0);
-        category[sizeCategory++] = categoryElem;
-        return true;
-    }
-
-    public boolean addService(String serviceElem) {
+    public boolean addService(Service serviceElem) {
 
         for (int i = 0; i < services.length; i++) {
 
@@ -53,6 +28,9 @@ public class Services {
             if (services[i] == null) {
                 services[i] = serviceElem;
                 sizeServices++;
+                if (checkCategoryExists(serviceElem.getCategory())) {
+                    addCategory(serviceElem.getCategory());
+                }
                 return true;
             }
 
@@ -60,11 +38,43 @@ public class Services {
 
         increaseArraySize(1);
         services[sizeServices++] = serviceElem;
+        if (checkCategoryExists(serviceElem.getCategory())) {
+            addCategory(serviceElem.getCategory());
+        }
         return true;
     }
 
-    public String[] getServices() { return services; }
-    public String[] getCategory() { return category; }
+    public Service[] getServicesArr() { return services; }
+    public String[] getCategoryArr() { return category; }
+
+    private boolean checkCategoryExists(String category) {
+
+        for (int i = 0; i < this.category.length - 1; i++) {
+
+            if (this.category[i].equals(category)) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    private boolean addCategory(String category) {
+
+        for (int i = 0; i < this.category.length - 1; i++) {
+
+            if (this.category[i] == null) {
+                this.category[i] = category;
+                return true;
+            }
+
+        }
+
+        increaseArraySize(0);
+        this.category[sizeCategory++] = category;
+        return true;
+
+    }
 
     private void increaseArraySize(int sel) {
 
@@ -73,7 +83,7 @@ public class Services {
 
             String[] tmpArray = new String[category.length + 1];
 
-            for (int i = 0; i < category.length; i++) {
+            for (int i = 0; i < category.length - 1; i++) {
                 tmpArray[i] = category[i];
             }
 
@@ -82,9 +92,9 @@ public class Services {
         // Increases services size if sel == 1
         if (sel == 1) {
 
-            String[] tmpArray = new String[services.length + 1];
+            Service[] tmpArray = new Service[services.length + 1];
 
-            for (int i = 0; i < services.length; i++) {
+            for (int i = 0; i < services.length - 1; i++) {
                 tmpArray[i] = services[i];
             }
 

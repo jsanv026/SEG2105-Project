@@ -117,21 +117,23 @@ public class Signup extends AppCompatActivity {
                 acc = new Employee(user, email, firstName, lastName, pass);
                 singleton.getAccounts().add(acc);
                 toastMessage("Welcome, " + firstName + ". You are logged in as an employee");
+                singleton.setCurrentLoggedIn(acc);
                 startActivity(new Intent(Signup.this, WelcomeScreen.class));
             }
             else if (role.equals("Patient")) {
                 acc = new Patient(user, email, firstName, lastName, pass);
                 singleton.getAccounts().add(acc);
                 toastMessage("Welcome, " + firstName + ". You are logged in as a patient");
+                singleton.setCurrentLoggedIn(acc);
                 startActivity(new Intent(Signup.this, WelcomeScreen.class));
             } else if (role.equals("Admin")) {
                 acc = new Admin(user, email, firstName, lastName, pass);
                 singleton.getAccounts().add(acc);
                 toastMessage("Welcome, " + firstName + ". You are logged in as an admin");
-                startActivity(new Intent(Signup.this, AdminMain.class));
+                singleton.setCurrentLoggedIn(acc);
+                startActivity(new Intent(Signup.this, AdminDeleteAccounts.class));
             }
 
-            singleton.setCurrentLoggedIn(acc.toString());
         } else {
             toastMessage("Passwords do not match");
         }

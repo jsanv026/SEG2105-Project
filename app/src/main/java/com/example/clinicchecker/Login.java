@@ -61,7 +61,9 @@ public class Login extends AppCompatActivity {
 
         for (int i = 0; i < singleton.getAccounts().getSize(); i++) {
 
-            if (user.equals(userAccounts[i].getUser())) {
+            if (userAccounts[i] == null ){
+
+            } else if(user.equals(userAccounts[i].getUser())) {
                 foundAccount = true;
                 index = i;
                 break;
@@ -72,6 +74,8 @@ public class Login extends AppCompatActivity {
 
             if (userAccounts[index].checkPassword(pass)) {
 
+                singleton.setCurrentLoggedIn(userAccounts[index]);
+
                 if (userAccounts[index].getRole().equals("Employee")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Employee");
                     startActivity(new Intent(Login.this, WelcomeScreen.class));
@@ -80,14 +84,12 @@ public class Login extends AppCompatActivity {
                     startActivity(new Intent(Login.this, WelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Admin")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Admin");
-                    startActivity(new Intent(Login.this, AdminMainScreen.class));
+                    startActivity(new Intent(Login.this, AdminDeleteAccounts.class));
                 }
-
-                singleton.setCurrentLoggedIn(userAccounts[index].toString());
 
             } else { toastMessage("Wrong password given"); }
 
-        } else { toastMessage("Unable to find this account. Please try again"); toastMessage(userAccounts[index].toString()); }
+        } else { toastMessage("Unable to find this account. Please try again"); }
     }
 
     public void openWelcomeScreen(View view) { startActivity(new Intent(Login.this, WelcomeScreen.class)); }

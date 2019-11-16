@@ -9,13 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".AdminMainScreen"
-            android:label="@string/title_activity_admin_main_screen"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".AdminMain"
-            android:label="@string/title_activity_admin_main" />
+        <activity android:name=".AdminServices"></activity>
+        <activity android:name=".AccountInfo" />
+        <activity android:name=".AdminDeleteAccounts" />
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
         <activity android:name=".WelcomeScreen">
