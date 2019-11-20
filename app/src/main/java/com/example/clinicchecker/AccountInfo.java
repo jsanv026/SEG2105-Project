@@ -24,8 +24,12 @@ public class AccountInfo extends AppCompatActivity {
         setContentView(R.layout.activity_account_info);
 
         TextView txtAccInfo = (TextView) findViewById(R.id.txtAccInfo);
-        Button btnLogout = (Button) findViewById(R.id.btnLogout);
-        Button btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
+        final Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        final Button btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
+        btnDeleteAccount.setBackgroundColor(Color.LTGRAY);
+        btnLogout.setBackgroundColor(Color.LTGRAY);
+
+
         txtAccInfo.append(acc.toString());
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +42,8 @@ public class AccountInfo extends AppCompatActivity {
                 } else {
                     toastMessage("Tap again to confirm");
                     confirmLogout = true;
+                    confirmDelete = false;
+                    btnDeleteAccount.setBackgroundColor(Color.LTGRAY);
                     v.setBackgroundColor(Color.RED);
                 }
             }
@@ -54,6 +60,8 @@ public class AccountInfo extends AppCompatActivity {
                 } else {
                     toastMessage("Are you sure? This action cannot be undone");
                     confirmDelete = true;
+                    confirmLogout = false;
+                    btnLogout.setBackgroundColor(Color.LTGRAY);
                     v.setBackgroundColor(Color.RED);
                 }
             }
@@ -61,7 +69,7 @@ public class AccountInfo extends AppCompatActivity {
 
     }
 
-    public void openServices(View v) {}
+    public void openServices(View v) { startActivity(new Intent(AccountInfo.this, AdminServices.class)); }
     public void openAccountsList(View v) { startActivity(new Intent(AccountInfo.this, AdminDeleteAccounts.class)); }
     private void toastMessage(String message) { Toast.makeText(AccountInfo.this, message, Toast.LENGTH_SHORT).show(); }
 

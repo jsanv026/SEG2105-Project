@@ -6,12 +6,15 @@ public class Singleton {
     private static Accounts accounts = new Accounts(10);
     private static Account currentLoggedIn;
     private static Services services = new Services(10);
+    private static int serviceIndex;
 
     private Singleton() { }
 
     public static Singleton getInstance() {
 
-        if (inst == null) { inst = new Singleton(); }
+        if (inst == null) {
+            inst = new Singleton();
+        }
 
         return inst;
 
@@ -21,4 +24,6 @@ public class Singleton {
     public static void setCurrentLoggedIn(Account s) { currentLoggedIn = s; }
     public static Account getCurrentLoggedIn() { return currentLoggedIn; }
     public static Services getServices() { return services; }
+    public static void setServicesIndex(int i) { serviceIndex = i; }
+    public static int getServiceIndex() { return serviceIndex; }
 }

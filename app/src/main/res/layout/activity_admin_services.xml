@@ -32,18 +32,23 @@
                 android:text="Account Info" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="40dp" />
-
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Services"
+            android:paddingTop="10dp"
             android:textSize="30sp"
             android:gravity="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/txtInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tap on a service to edit it"
+            android:textSize="15sp"
+            android:gravity="center"/>
 
         <Space
             android:layout_width="match_parent"
@@ -54,21 +59,10 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/layoutServices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/txtServices"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <LinearLayout
-                    android:id="@+id/layoutServicesButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"></LinearLayout>
-            </LinearLayout>
+                android:orientation="vertical" />
         </ScrollView>
     </LinearLayout>
 
