@@ -3,6 +3,7 @@ package com.example.clinicchecker;
 public class Service {
 
     private String serviceName;
+    private String role;
 
     public Service(String serviceName) {
 

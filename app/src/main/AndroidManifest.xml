@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ServiceInfo"></activity>
+        <activity android:name=".ClinicInfo"></activity>
+        <activity android:name=".EmployeeWelcomeScreen" />
+        <activity android:name=".AddService" />
+        <activity android:name=".ServiceInfo" />
         <activity android:name=".AdminServices" />
         <activity android:name=".AccountInfo" />
         <activity android:name=".AdminDeleteAccounts" />

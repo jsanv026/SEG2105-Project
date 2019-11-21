@@ -34,7 +34,11 @@ public class ServiceInfo extends AppCompatActivity {
             return;
         }
 
-        services.editService(services.getService(singleton.getServiceIndex()), editText.getText().toString());
+        if (!services.editService(services.getService(singleton.getServiceIndex()), editText.getText().toString())) {
+
+            throw new NullPointerException("fuck it didnt work");
+
+        }
         toastMessage("Successfully changed service name");
         startActivity(new Intent(ServiceInfo.this, AdminServices.class));
 

@@ -29,11 +29,12 @@
                 android:text="Account Info" />
 
             <Button
-                android:id="@+id/btnServices"
+                android:id="@+id/btnLeft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_weight="1"
+                android:onClick="openServices"
                 android:text="Services" />
         </LinearLayout>
 

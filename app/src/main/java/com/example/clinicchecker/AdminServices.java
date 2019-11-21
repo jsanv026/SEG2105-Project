@@ -19,7 +19,7 @@ public class AdminServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_services);
 
-        for (int i = 0; i < services.getSize(); i++) {
+        for (int i = 0; i < services.getServiceArr().length; i++) {
 
             final TextView myTxtView = new TextView(this);
             myTxtView.setTextSize(20);
@@ -28,11 +28,11 @@ public class AdminServices extends AppCompatActivity {
 
             if (services.getService(i) != null) {
 
-                myTxtView.append("Service Name: " + services.getService(i).getServiceName());
+                myTxtView.append("o --- Service Name: " + services.getService(i).getServiceName());
                 LinearLayout ll = (LinearLayout) findViewById(R.id.layoutServices);
                 ll.addView(myTxtView);
                 Space spc = new Space(this);
-                spc.setMinimumHeight(20);
+                spc.setMinimumHeight(30);
                 ll.addView(spc);
 
                 myTxtView.setOnClickListener(new View.OnClickListener() {
@@ -48,4 +48,9 @@ public class AdminServices extends AppCompatActivity {
         }
 
     }
+
+    public void accountInfo(View v) { startActivity(new Intent(AdminServices.this, AccountInfo.class)); }
+    public void accountsList(View v) { startActivity(new Intent(AdminServices.this, AdminDeleteAccounts.class)); }
+    public void add(View v) { startActivity(new Intent(AdminServices.this, AddService.class)); }
+
 }

@@ -22,10 +22,11 @@ public class Services {
             return false;
         }
 
-        for (int i = 0; i < services.length - 1; i++) {
+        for (int i = 0; i < services.length; i++) {
 
             if (services[i] == null) {
-                services[sizeServices++] = serviceElem;
+                services[i] = serviceElem;
+                sizeServices++;
                 return true;
             }
 
@@ -56,12 +57,13 @@ public class Services {
 
     public int getSize() { return sizeServices; }
     public Service getService(int i) { return services[i]; }
+    public Service[] getServiceArr() { return services; }
 
     private int findService(Service serviceElem) {
 
         if (sizeServices == 0) { return -1; }
 
-        for (int i = 0; i < sizeServices - 1; i++) {
+        for (int i = 0; i < services.length; i++) {
 
             if (serviceElem.equals(services[i])) {
                 return i;

@@ -78,12 +78,15 @@ public class Login extends AppCompatActivity {
 
                 if (userAccounts[index].getRole().equals("Employee")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Employee");
-                    startActivity(new Intent(Login.this, WelcomeScreen.class));
+                    singleton.setCurrentLoggedIn(userAccounts[index]);
+                    startActivity(new Intent(Login.this, EmployeeWelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Patient")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Patient");
+                    singleton.setCurrentLoggedIn(userAccounts[index]);
                     startActivity(new Intent(Login.this, WelcomeScreen.class));
                 } else if (userAccounts[index].getRole().equals("Admin")) {
                     toastMessage("Welcome, " + userAccounts[index].getFirstName() + ". You are logged in as an Admin");
+                    singleton.setCurrentLoggedIn(userAccounts[index]);
                     startActivity(new Intent(Login.this, AdminDeleteAccounts.class));
                 }
 

@@ -26,11 +26,21 @@ public class AccountInfo extends AppCompatActivity {
         TextView txtAccInfo = (TextView) findViewById(R.id.txtAccInfo);
         final Button btnLogout = (Button) findViewById(R.id.btnLogout);
         final Button btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
+        Button btnLeft = (Button) findViewById(R.id.btnLeft);
+        Button btnRight = (Button) findViewById(R.id.btnRight);
         btnDeleteAccount.setBackgroundColor(Color.LTGRAY);
         btnLogout.setBackgroundColor(Color.LTGRAY);
-
-
         txtAccInfo.append(acc.toString());
+
+        if (acc.getRole().equals("Employee")) {
+            btnLeft.setText("Clinic Info");
+            btnLeft.setOnClickListener((new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(AccountInfo.this, ClinicInfo.class));
+                }
+            }));
+            btnRight.setText("Services");
+        }
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
