@@ -91,7 +91,6 @@ public class AdminDeleteAccounts extends AppCompatActivity {
 
     public void openAccountInfo(View view) { startActivity(new Intent(AdminDeleteAccounts.this, AccountInfo.class));}
     public void openServices(View view) { startActivity(new Intent(AdminDeleteAccounts.this, AdminServices.class));}
-
     private void toastMessage(String message) { Toast.makeText(AdminDeleteAccounts.this, message, Toast.LENGTH_SHORT).show(); }
 
 }

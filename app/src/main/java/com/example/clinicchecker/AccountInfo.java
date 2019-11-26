@@ -40,6 +40,11 @@ public class AccountInfo extends AppCompatActivity {
                 }
             }));
             btnRight.setText("Services");
+            btnRight.setOnClickListener((new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(AccountInfo.this, EmployeeServices.class));
+                }
+            }));
         }
 
         btnLogout.setOnClickListener(new View.OnClickListener() {

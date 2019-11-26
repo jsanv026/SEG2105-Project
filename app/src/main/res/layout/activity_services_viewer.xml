@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminServices">
+    tools:context=".ServicesViewer">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,67 +12,45 @@
         android:orientation="vertical"
         android:paddingTop="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnAccountsList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="accountsList"
-                android:text="Accounts List" />
-
-            <Button
-                android:id="@+id/btnAccInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="accountInfo"
-                android:text="Account Info" />
-        </LinearLayout>
-
         <Button
-            android:id="@+id/btnAdd"
+            android:id="@+id/btnBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="add"
-            android:text="Add Service" />
+            android:onClick="back"
+            android:paddingBottom="10dp"
+            android:text="Back" />
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Services"
-            android:paddingTop="10dp"
-            android:textSize="30sp"
+            android:textSize="30dp"
             android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/txtInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tap on a service to edit it"
-            android:textSize="15sp"
+            android:text="Tap an a service to delete it"
             android:gravity="center"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/layoutServicesView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </ScrollView>
-    </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/layoutServicesView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

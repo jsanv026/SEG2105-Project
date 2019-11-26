@@ -65,6 +65,7 @@ public class EmployeeWelcomeScreen extends AppCompatActivity {
 
         toastMessage("Successfully created employee profile");
         startActivity(new Intent(EmployeeWelcomeScreen.this, AccountInfo.class));
+        employee.toggleCreatedProfile();
 
     }
 

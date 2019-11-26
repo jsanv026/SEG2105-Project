@@ -8,16 +8,18 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Space;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class AdminServices extends AppCompatActivity {
+public class EmployeeAddService extends AppCompatActivity {
 
     private Singleton singleton = Singleton.getInstance();
     private Services services = singleton.getServices();
+    private Employee employee = (Employee) singleton.getCurrentLoggedIn();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_services);
+        setContentView(R.layout.activity_employee_add_service);
 
         for (int i = 0; i < services.getServiceArr().length; i++) {
 
@@ -29,7 +31,7 @@ public class AdminServices extends AppCompatActivity {
             if (services.getService(i) != null) {
 
                 myTxtView.append("o --- Service Name: " + services.getService(i).getServiceName());
-                LinearLayout ll = (LinearLayout) findViewById(R.id.layoutServicesView);
+                LinearLayout ll = (LinearLayout) findViewById(R.id.layoutAvailableServices);
                 ll.addView(myTxtView);
                 Space spc = new Space(this);
                 spc.setMinimumHeight(30);
@@ -38,19 +40,18 @@ public class AdminServices extends AppCompatActivity {
                 myTxtView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        singleton.setServicesIndex((int) myTxtView.getTag());
-                        startActivity(new Intent(AdminServices.this, ServiceInfo.class));
+                        int i = (int) myTxtView.getTag();
+                        if (employee.getClinic().getServices().addService(services.getService(i))) { toastMessage("Successfully added service"); }
+                        else { toastMessage("Successfully added service"); }
                     }
                 });
 
             }
 
         }
-
     }
 
-    public void accountInfo(View v) { startActivity(new Intent(AdminServices.this, AccountInfo.class)); }
-    public void accountsList(View v) { startActivity(new Intent(AdminServices.this, AdminDeleteAccounts.class)); }
-    public void add(View v) { startActivity(new Intent(AdminServices.this, AddService.class)); }
+    public void back(View v) { startActivity(new Intent(EmployeeAddService.this, ServicesViewer.class)); }
+    private void toastMessage(String message) { Toast.makeText(EmployeeAddService.this, message, Toast.LENGTH_SHORT).show(); }
 
 }
