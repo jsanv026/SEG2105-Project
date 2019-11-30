@@ -20,7 +20,6 @@ public class Clinic {
     public void setAddress(String str) {address = str; }
     public void setPhoneNumber(String str) { phoneNumber = str; }
     public void setPaymentMethods(String[] strArr) { paymentMethods = strArr; }
-    public void addService(Service service) { services.addService(service); }
 
     // Getters
 
@@ -47,7 +46,8 @@ public class Clinic {
         return "Clinic Name: " + clinicName +
                 "\nAddress: " + address +
                 "\nPhone Number: " + phoneNumber +
-                "\n Payment Methods: " + strB.toString();
+                "\nPayment Methods: " + strB.toString() +
+                "\nWorking Hours: " + workingHours;
 
     }
 }

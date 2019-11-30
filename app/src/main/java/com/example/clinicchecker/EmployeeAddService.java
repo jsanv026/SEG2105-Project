@@ -3,6 +3,7 @@ package com.example.clinicchecker;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -15,6 +16,10 @@ public class EmployeeAddService extends AppCompatActivity {
     private Singleton singleton = Singleton.getInstance();
     private Services services = singleton.getServices();
     private Employee employee = (Employee) singleton.getCurrentLoggedIn();
+
+    private TextView tmpTxtView;
+    private boolean confirm = false;
+    private Service confirmName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +46,24 @@ public class EmployeeAddService extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         int i = (int) myTxtView.getTag();
-                        if (employee.getClinic().getServices().addService(services.getService(i))) { toastMessage("Successfully added service"); }
-                        else { toastMessage("Successfully added service"); }
+                        if (tmpTxtView != null) {
+                            tmpTxtView.setBackgroundColor(Color.WHITE);
+                        }
+
+                        if (confirm && confirmName.equals(services.getService(i))) {
+                            confirm = false;
+                            if (employee.getClinic().getServices().addService(services.getService(i))) { toastMessage("Successfully added service"); }
+                            else { toastMessage("Unable to add service (probably exists already)"); }
+                            startActivity(new Intent(EmployeeAddService.this, EmployeeAddService.class));
+
+                        } else {
+                            toastMessage("Tap again to confirm");
+                            confirmName = services.getService(i);
+                            confirm = true;
+                            v.setBackgroundColor(Color.GREEN);
+                            tmpTxtView = (TextView) v;
+                        }
+
                     }
                 });
 
@@ -51,7 +72,7 @@ public class EmployeeAddService extends AppCompatActivity {
         }
     }
 
-    public void back(View v) { startActivity(new Intent(EmployeeAddService.this, ServicesViewer.class)); }
+    public void back(View v) { startActivity(new Intent(EmployeeAddService.this, EmployeeServices.class)); }
     private void toastMessage(String message) { Toast.makeText(EmployeeAddService.this, message, Toast.LENGTH_SHORT).show(); }
 
 }

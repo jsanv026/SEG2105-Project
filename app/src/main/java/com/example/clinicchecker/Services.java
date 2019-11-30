@@ -9,8 +9,6 @@ public class Services {
 
         services = new Service[capacity];
         sizeServices = 0;
-        addService((new Service("Walk in")));
-        addService((new Service("CPR Training")));
 
     }
 

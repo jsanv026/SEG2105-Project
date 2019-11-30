@@ -5,10 +5,15 @@ public class Singleton {
     private static Singleton inst;
     private static Accounts accounts = new Accounts(10);
     private static Account currentLoggedIn;
-    private static Services services = new Services(10);
+    private static Services services;
     private static int serviceIndex;
 
-    private Singleton() { }
+    private Singleton() {
+
+        services = new Services(10);
+        services.addService((new Service("Walk in")));
+        services.addService((new Service("CPR Training")));
+    }
 
     public static Singleton getInstance() {
 

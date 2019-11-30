@@ -27,6 +27,7 @@ public class ServicesViewer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services_viewer);
 
+        if (services.getServiceArr().length != 0) { System.out.println("pepegas " + services.getServiceArr().length + " pepegas"); }
         for (int i = 0; i < services.getServiceArr().length; i++) {
 
             final TextView myTxtView = new TextView(this);
@@ -48,7 +49,7 @@ public class ServicesViewer extends AppCompatActivity {
                     public void onClick(View v) {
                         int i = (int) myTxtView.getTag();
                         if (tmpTxtView != null) {
-                            tmpTxtView.setBackgroundColor(Color.LTGRAY);
+                            tmpTxtView.setBackgroundColor(Color.WHITE);
                         }
 
                         if (confirm && confirmName.equals(services.getService(i))) {
