@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClinicInfo">
+    tools:context=".PatientAvailableClinics">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,59 +18,45 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btnSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                android:onClick="services"
-                android:text="Services" />
+                android:onClick="search"
+                android:text="Search" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnAccountInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="accountInfo"
                 android:text="Account Info" />
-
         </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@android:color/black" />
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clinic Info"
-            android:gravity="center"
+            android:text="Available Clinics"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="30sp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-        <Button
-            android:id="@+id/btnEditClinic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="editClinicHours"
-            android:text="Edit Clinic Hours" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="10sp" />
+            android:gravity="center"
+            android:paddingTop="10dp"/>
 
         <TextView
-            android:id="@+id/txtClinicInfo"
+            android:id="@+id/txtInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="15dp" />
+            android:text="Tap on a clinic for more info"
+            android:gravity="center"
+            android:paddingBottom="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/layoutClinics"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"></LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ public class Clinic {
     private String address;
     private String phoneNumber;
     private String[] paymentMethods;
+    private int bookings = 0;
 
     public Clinic() {
         services = new Services(10);
@@ -31,7 +32,15 @@ public class Clinic {
     public String[] getPaymentMethods() { return paymentMethods; }
     public Services getServices() { return services; }
 
+    public void book() { bookings++; }
+    public int getBookings() { return bookings; }
+
     public String toString() {
+
+        String workingHours;
+
+        if (this.workingHours == null) { workingHours = ""; }
+        else { workingHours = this.workingHours; }
 
         StringBuilder strB = new StringBuilder();
         for (int i = 0; i < paymentMethods.length; i++) {
@@ -47,7 +56,8 @@ public class Clinic {
                 "\nAddress: " + address +
                 "\nPhone Number: " + phoneNumber +
                 "\nPayment Methods: " + strB.toString() +
-                "\nWorking Hours: " + workingHours;
+                "\nWorking Hours: " + workingHours +
+                "\n\nApproximate Waiting Time: " + bookings*15 + " minutes";
 
     }
 }

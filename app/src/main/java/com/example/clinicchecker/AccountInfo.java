@@ -47,6 +47,21 @@ public class AccountInfo extends AppCompatActivity {
             }));
         }
 
+        if (acc.getRole().equals("Patient")) {
+            btnLeft.setText("Available Clinics");
+            btnLeft.setOnClickListener((new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(AccountInfo.this, PatientAvailableClinics.class));
+                }
+            }));
+            btnRight.setText("Search");
+            btnRight.setOnClickListener((new View.OnClickListener() {
+                public void onClick(View v) {
+                    startActivity(new Intent(AccountInfo.this, PatientSearch.class));
+                }
+            }));
+        }
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (confirmLogout) {

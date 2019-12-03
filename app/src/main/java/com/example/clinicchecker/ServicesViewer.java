@@ -37,7 +37,7 @@ public class ServicesViewer extends AppCompatActivity {
 
             if (services.getService(i) != null) {
 
-                myTxtView.append("o --- Service Name: " + services.getService(i).getServiceName());
+                myTxtView.append("o --- " + services.getService(i).getServiceName());
                 LinearLayout ll = (LinearLayout) findViewById(R.id.layoutServicesView);
                 ll.addView(myTxtView);
                 Space spc = new Space(this);

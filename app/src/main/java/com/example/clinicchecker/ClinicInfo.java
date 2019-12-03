@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,8 +21,13 @@ public class ClinicInfo extends AppCompatActivity {
 
         txtClinicInfo = (TextView) findViewById(R.id.txtClinicInfo);
         txtClinicInfo.append(employee.getClinic().toString());
+        txtClinicInfo.setTextSize(15);
+        txtClinicInfo.setGravity(Gravity.CENTER);
 
     }
 
-    public void accoutnInfo(View v) { startActivity( new Intent(ClinicInfo.this, AccountInfo.class)); }
+    public void accountInfo(View v) { startActivity( new Intent(ClinicInfo.this, AccountInfo.class)); }
+    public void services(View v) { startActivity( new Intent(ClinicInfo.this, EmployeeServices.class)); }
+    public void editClinicHours(View v) { startActivity( new Intent(ClinicInfo.this, EditClinicHours.class)); }
+
 }

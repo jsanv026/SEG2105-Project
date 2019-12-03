@@ -7,12 +7,18 @@ public class Singleton {
     private static Account currentLoggedIn;
     private static Services services;
     private static int serviceIndex;
+    private static Clinics clinics;
+    private static int clinicIndex;
+    private static int num;
+    private static Service serviceToSearch;
 
     private Singleton() {
 
         services = new Services(10);
         services.addService((new Service("Walk in")));
         services.addService((new Service("CPR Training")));
+        services.addService((new Service("Flu Shots")));
+        services.addService((new Service("Blood Donations")));
     }
 
     public static Singleton getInstance() {
@@ -31,4 +37,18 @@ public class Singleton {
     public static Services getServices() { return services; }
     public static void setServicesIndex(int i) { serviceIndex = i; }
     public static int getServiceIndex() { return serviceIndex; }
+    public static Clinic[] getClinics() {
+
+        if (clinics == null) {
+
+            clinics = new Clinics();
+        }
+        return clinics.getClinics();
+    }
+    public static void setClinicIndex(int i) { clinicIndex = i;}
+    public static int getClinicIndex() { return clinicIndex;}
+    public static void setNum(int i) { num = i; }
+    public static int getNum() { return num; }
+    public static void setServiceToSearch(Service s) { serviceToSearch = s; }
+    public static Service getServiceToSearch() { return serviceToSearch; }
 }

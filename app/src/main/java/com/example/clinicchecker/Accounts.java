@@ -11,12 +11,41 @@ public class Accounts {
 
         this.capacity = capacity;
         userAccounts = new Account[capacity];
-        this.add(new Admin("admin",null, "admin", null,"5T5ptQ"));
-        this.add(new Employee("A",null, "a", "a","a"));
-        this.add(new Patient("B",null, "b", "b","b"));
-        this.add(new Patient("C",null, "c", "c","c"));
-        this.add(new Patient("D",null, "d", "d","d"));
-        this.add(new Patient("E",null, "e", "e","e"));
+
+        Employee employee1 = new Employee("A","employee1@uottawa.ca", "John", "Doe","a");
+        Employee employee2 = new Employee("B","employee2@uottawa.ca", "Jane", "Doe","b");
+        this.add(new Admin("admin","admin@uottawa.ca", "admin", "admin","5T5ptQ"));
+        this.add(employee1);
+        this.add(employee2);
+        this.add(new Patient("C","patient1@uottawa.ca", "Albert", "Speer","c"));
+
+        employee1.getClinic().setWorkingHours("8:00-18:00");
+        employee2.getClinic().setWorkingHours("10:00-20:00");
+
+        employee1.getClinic().setClinicName("uOttawa Clinic");
+        employee2.getClinic().setClinicName("Gatineau Clinic");
+
+        employee1.getClinic().setAddress("99 Rideau St.");
+        employee2.getClinic().setAddress("101 King Edward Blvd.");
+
+        employee1.getClinic().setInsuranceType("OHIP");
+        employee2.getClinic().setInsuranceType("OHIP");
+
+        employee1.getClinic().setPhoneNumber("613-111-9123");
+        employee2.getClinic().setPhoneNumber("613-111-2412");
+
+        employee1.getClinic().getServices().addService(new Service("CPR Training"));
+        employee1.getClinic().getServices().addService(new Service("Flu Shots"));
+
+        employee2.getClinic().getServices().addService(new Service("Flu Shots"));
+        employee2.getClinic().getServices().addService(new Service("Blood Donations"));
+
+        String[] strPaymentMethods = {"Debit", "Credit"};
+        employee1.getClinic().setPaymentMethods(strPaymentMethods);
+        employee2.getClinic().setPaymentMethods(strPaymentMethods);
+
+        employee1.toggleCreatedProfile();
+        employee2.toggleCreatedProfile();
 
     }
 
