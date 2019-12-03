@@ -34,11 +34,11 @@ public class Accounts {
         employee1.getClinic().setPhoneNumber("613-111-9123");
         employee2.getClinic().setPhoneNumber("613-111-2412");
 
-        employee1.getClinic().getServices().addService(new Service("CPR Training"));
-        employee1.getClinic().getServices().addService(new Service("Flu Shots"));
+        employee1.getClinic().getServices().addService(new Service("CPR Training", "Nurse"));
+        employee1.getClinic().getServices().addService(new Service("Flu Shots", "Nurse"));
 
-        employee2.getClinic().getServices().addService(new Service("Flu Shots"));
-        employee2.getClinic().getServices().addService(new Service("Blood Donations"));
+        employee2.getClinic().getServices().addService(new Service("Flu Shots", "Nurse"));
+        employee2.getClinic().getServices().addService(new Service("Blood Donations", "Nurse"));
 
         String[] strPaymentMethods = {"Debit", "Credit"};
         employee1.getClinic().setPaymentMethods(strPaymentMethods);

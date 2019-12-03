@@ -20,6 +20,15 @@
             android:paddingBottom="10dp"
             android:text="Back" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:layout_height="5dp" />
+
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
@@ -27,12 +36,14 @@
             android:text="Services"
             android:textSize="30dp"
             android:gravity="center"
+            android:paddingTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/txtInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="Tap an a service to delete it"
             android:gravity="center"/>
 
@@ -44,7 +55,8 @@
                 android:id="@+id/layoutServicesView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical"
+                android:paddingLeft="10dp"></LinearLayout>
         </ScrollView>
 
     </LinearLayout>

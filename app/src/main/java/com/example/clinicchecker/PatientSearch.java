@@ -36,7 +36,7 @@ public class PatientSearch extends AppCompatActivity {
 
                 final TextView tmpTxtView = new TextView(this);
                 tmpTxtView.setClickable(true);
-                tmpTxtView.setTextSize(15);
+                tmpTxtView.setTextSize(20);
                 tmpTxtView.append("o --- " + clinics[i].getAddress());
                 llClinics.addView(tmpTxtView);
                 Space spc = new Space(this);
@@ -69,7 +69,7 @@ public class PatientSearch extends AppCompatActivity {
 
                 final TextView tmpTxtView = new TextView(this);
                 tmpTxtView.setClickable(true);
-                tmpTxtView.setTextSize(15);
+                tmpTxtView.setTextSize(20);
                 tmpTxtView.append("o --- " + clinics[i].getWorkingHours());
                 llClinics.addView(tmpTxtView);
                 Space spc = new Space(this);
@@ -101,7 +101,7 @@ public class PatientSearch extends AppCompatActivity {
 
                 final TextView tmpTxtView = new TextView(this);
                 tmpTxtView.setClickable(true);
-                tmpTxtView.setTextSize(15);
+                tmpTxtView.setTextSize(20);
                 tmpTxtView.append("o --- " + services.getService(i).getServiceName());
                 llClinics.addView(tmpTxtView);
                 Space spc = new Space(this);
@@ -122,5 +122,8 @@ public class PatientSearch extends AppCompatActivity {
         }
 
     }
+
+    public void accountInfo(View v) { startActivity(new Intent(PatientSearch.this, AccountInfo.class)); }
+    public void availableClinics(View v) { startActivity(new Intent(PatientSearch.this, PatientAvailableClinics.class)); }
 
 }

@@ -15,10 +15,10 @@ public class Singleton {
     private Singleton() {
 
         services = new Services(10);
-        services.addService((new Service("Walk in")));
-        services.addService((new Service("CPR Training")));
-        services.addService((new Service("Flu Shots")));
-        services.addService((new Service("Blood Donations")));
+        services.addService((new Service("Walk in", "Staff")));
+        services.addService((new Service("CPR Training", "Nurse")));
+        services.addService((new Service("Flu Shots", "Nurse")));
+        services.addService((new Service("Blood Donations", "Nurse")));
     }
 
     public static Singleton getInstance() {

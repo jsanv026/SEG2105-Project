@@ -14,7 +14,7 @@ public class PatientSelectedClinic extends AppCompatActivity {
     private Clinic[] clinics = singleton.getClinics();
     private int clinicIndex = singleton.getClinicIndex();
     private Clinic clinic = clinics[clinicIndex];
-    private TextView txtClinicInfo;
+    private TextView txtClinicInfo, txtReviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,11 @@ public class PatientSelectedClinic extends AppCompatActivity {
         setContentView(R.layout.activity_patient_selected_clinic);
 
         txtClinicInfo = (TextView) findViewById(R.id.txtClinicInfo);
+        txtClinicInfo.setTextSize(20);
+        txtReviews = (TextView) findViewById(R.id.txtReviews);
+        txtReviews.setTextSize(20);
         txtClinicInfo.append(clinic.toString());
+        txtReviews.append(clinic.reviews());
     }
 
     public void back(View v) {
@@ -32,6 +36,8 @@ public class PatientSelectedClinic extends AppCompatActivity {
         if (num == 0) { startActivity(new Intent(PatientSelectedClinic.this, PatientAvailableClinics.class)); }
         else if (num == 1) { startActivity(new Intent(PatientSelectedClinic.this, PatientSearch.class)); }
     }
+
+    public void review(View v) { startActivity(new Intent(PatientSelectedClinic.this, PatientRating.class)); }
 
     public void book(View v) {
 

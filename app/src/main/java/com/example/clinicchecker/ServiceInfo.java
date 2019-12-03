@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class ServiceInfo extends AppCompatActivity {
 
-    EditText editText;
+    EditText editText, edtOperator;
     private Singleton singleton = Singleton.getInstance();
     private Services services = singleton.getServices();
 
@@ -20,8 +20,10 @@ public class ServiceInfo extends AppCompatActivity {
         setContentView(R.layout.activity_service_info);
 
         editText = (EditText) findViewById(R.id.edtServiceName);
+        edtOperator = (EditText) findViewById(R.id.edtOperator);
 
         editText.setText(services.getService(singleton.getServiceIndex()).getServiceName());
+        edtOperator.setText(services.getService(singleton.getServiceIndex()).getRole());
     }
 
     public void confirm(View v) {
@@ -34,7 +36,12 @@ public class ServiceInfo extends AppCompatActivity {
             return;
         }
 
-        if (!services.editService(services.getService(singleton.getServiceIndex()), editText.getText().toString())) {
+        if (services.findService(new Service(editText.getText().toString(), "")) != -1) {
+            toastMessage("Cannot change service to an existing service");
+            return;
+        }
+
+        if (!services.editService(services.getService(singleton.getServiceIndex()), editText.getText().toString(), edtOperator.getText().toString())) {
 
             throw new NullPointerException("fuck it didnt work");
 

@@ -38,12 +38,13 @@ public class Services {
         return true;
     }
 
-    public boolean editService(Service service, String name) {
+    public boolean editService(Service service, String name, String role) {
 
         int index = findService(service);
         if (index == -1) {return false;}
 
         services[index].setServiceName(name);
+        services[index].setRole(role);
         return true;
 
     }
@@ -57,17 +58,18 @@ public class Services {
     public Service getService(int i) { return services[i]; }
     public Service[] getServiceArr() { return services; }
 
-    private int findService(Service serviceElem) {
+    public int findService(Service serviceElem) {
 
         if (sizeServices == 0) { return -1; }
 
         for (int i = 0; i < services.length; i++) {
 
-            if (serviceElem.equals(services[i])) {
-                return i;
+            if (services[i] != null) {
 
+                if (services[i].getServiceName() != null && serviceElem.getServiceName().equals(services[i].getServiceName())) {
+                    return i;
+                }
             }
-
         }
 
         return -1;

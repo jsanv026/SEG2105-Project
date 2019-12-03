@@ -24,7 +24,7 @@ public class EditClinicHours extends AppCompatActivity {
         setContentView(R.layout.activity_edit_clinic_hours);
 
         edtHours = (EditText) findViewById(R.id.edtHours);
-        btnConfirm = (Button) findViewById(R.id.btnConfirm);
+        btnConfirm = (Button) findViewById(R.id.btnSubmit);
 
         if (clinic.getWorkingHours() != null) { edtHours.setText(clinic.getWorkingHours()); }
 

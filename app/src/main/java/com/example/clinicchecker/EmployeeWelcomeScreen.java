@@ -50,6 +50,22 @@ public class EmployeeWelcomeScreen extends AppCompatActivity {
 
         }
 
+        if (!isAlpha(edtClinicName.getText().toString())) {
+            toastMessage("Clinic name is invalid");
+            return;
+        }
+
+        try { int i = Integer.valueOf(edtPhoneNumber.getText().toString()); }
+        catch (Exception e) {
+            toastMessage("Phone number is invalid");
+            return;
+        }
+
+        if (!isAlpha(edtInsuranceType.getText().toString())) {
+            toastMessage("Insurance type is invalid");
+            return;
+        }
+
         employee.getClinic().setClinicName(edtClinicName.getText().toString());
         employee.getClinic().setAddress(edtAddress.getText().toString());
         employee.getClinic().setPhoneNumber(edtPhoneNumber.getText().toString());
@@ -61,7 +77,7 @@ public class EmployeeWelcomeScreen extends AppCompatActivity {
         if (chkCredit.isChecked()) { paymentMethods[1] = "Credit"; }
         if (chkCash.isChecked()) { paymentMethods[2] = "Cash"; }
 
-        employee.getClinic().setPaymentMethods(paymentMethods   );
+        employee.getClinic().setPaymentMethods(paymentMethods);
 
         toastMessage("Successfully created employee profile");
         startActivity(new Intent(EmployeeWelcomeScreen.this, AccountInfo.class));
@@ -70,6 +86,18 @@ public class EmployeeWelcomeScreen extends AppCompatActivity {
     }
 
     public void back(View v) { startActivity(new Intent(EmployeeWelcomeScreen.this, WelcomeScreen.class)); }
+
+    private boolean isAlpha(String str) {
+
+        char[] chars = str.toCharArray();
+
+        for (int i = 0; i < str.length(); i++) {
+
+            if (!Character.isLetter(chars[i])) { return false; }
+
+        }
+        return true;
+    }
 
     private void toastMessage(String message) { Toast.makeText(EmployeeWelcomeScreen.this, message, Toast.LENGTH_SHORT).show(); }
 

@@ -21,7 +21,7 @@ public class ClinicInfo extends AppCompatActivity {
 
         txtClinicInfo = (TextView) findViewById(R.id.txtClinicInfo);
         txtClinicInfo.append(employee.getClinic().toString());
-        txtClinicInfo.setTextSize(15);
+        txtClinicInfo.setTextSize(20);
         txtClinicInfo.setGravity(Gravity.CENTER);
 
     }

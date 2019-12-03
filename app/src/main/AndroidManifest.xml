@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PatientServicesSearch"></activity>
+        <activity android:name=".PatientRating"></activity>
+        <activity android:name=".PatientServicesSearch" />
         <activity android:name=".PatientSearch" />
         <activity android:name=".PatientSelectedClinic" />
         <activity android:name=".PatientAvailableClinics" />

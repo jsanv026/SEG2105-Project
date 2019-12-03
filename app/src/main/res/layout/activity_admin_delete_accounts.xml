@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:orientation="horizontal"
-            android:paddingTop="10dp">
+            android:paddingTop="15dp">
 
             <Button
                 android:id="@+id/btnAccInfo"
@@ -37,6 +37,15 @@
                 android:onClick="openServices"
                 android:text="Services" />
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:layout_height="5dp" />
 
         <TextView
             android:id="@+id/textView"

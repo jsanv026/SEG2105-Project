@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="10dp">
+        android:paddingTop="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,6 +34,15 @@
                 android:text="Account Info" />
         </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:layout_height="5dp" />
+
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="match_parent"
@@ -52,11 +61,16 @@
             android:gravity="center"
             android:paddingBottom="10dp"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10sp" />
+
         <LinearLayout
             android:id="@+id/layoutClinics"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"
+            android:paddingLeft="10dp"></LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,8 +26,8 @@ public class AccountInfo extends AppCompatActivity {
         TextView txtAccInfo = (TextView) findViewById(R.id.txtAccInfo);
         final Button btnLogout = (Button) findViewById(R.id.btnLogout);
         final Button btnDeleteAccount = (Button) findViewById(R.id.btnDeleteAccount);
-        Button btnLeft = (Button) findViewById(R.id.btnLeft);
-        Button btnRight = (Button) findViewById(R.id.btnRight);
+        final Button btnLeft = (Button) findViewById(R.id.btnLeft);
+        final Button btnRight = (Button) findViewById(R.id.btnRight);
         btnDeleteAccount.setBackgroundColor(Color.LTGRAY);
         btnLogout.setBackgroundColor(Color.LTGRAY);
         txtAccInfo.append(acc.toString());
@@ -52,6 +52,7 @@ public class AccountInfo extends AppCompatActivity {
             btnLeft.setOnClickListener((new View.OnClickListener() {
                 public void onClick(View v) {
                     startActivity(new Intent(AccountInfo.this, PatientAvailableClinics.class));
+
                 }
             }));
             btnRight.setText("Search");

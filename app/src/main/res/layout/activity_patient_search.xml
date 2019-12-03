@@ -21,7 +21,8 @@
                 android:id="@+id/btnAccountInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="1.5"
+                android:onClick="accountInfo"
                 android:text="Account Info" />
 
             <Button
@@ -29,9 +30,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="availableClinics"
                 android:text="Available Clinics" />
 
+
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:layout_height="5dp" />
 
         <TextView
             android:id="@+id/txtTitle"
@@ -65,6 +77,15 @@
             android:layout_weight="1"
             android:onClick="services"
             android:text="Search by Services" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:layout_height="2dp" />
 
         <ScrollView
             android:layout_width="match_parent"

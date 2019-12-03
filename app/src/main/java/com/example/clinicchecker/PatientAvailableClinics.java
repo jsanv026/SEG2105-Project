@@ -28,7 +28,8 @@ public class PatientAvailableClinics extends AppCompatActivity {
             if (clinics[i] != null && clinics[i].getClinicName() != null) {
                 final TextView tmpTxtView = new TextView(this);
                 tmpTxtView.setClickable(true);
-                tmpTxtView.append("o --- " + clinics[i].getClinicName());
+                tmpTxtView.append("o " + clinics[i].getClinicName());
+                tmpTxtView.setTextSize(20);
                 llClinics.addView(tmpTxtView);
                 Space spc = new Space(this);
                 spc.setMinimumHeight(30);

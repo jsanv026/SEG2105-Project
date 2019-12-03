@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditClinicHours">
+    tools:context=".PatientRating">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,43 +29,72 @@
             android:layout_height="5dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Clinic Hours"
-            android:textSize="30sp"
             android:gravity="center"
-            android:paddingTop="10dp"
+            android:text="Review"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="30sp"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:id="@+id/txtInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="10dp"/>
+
+        <EditText
+            android:id="@+id/edtComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/rdGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:paddingBottom="20dp">
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
-            <TextView
-                android:id="@+id/txtHours"
+            <RadioButton
+                android:id="@+id/rdBtn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:text="Clinic Hours (xx:xx - xx:xx)"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                android:text="1" />
 
-            <EditText
-                android:id="@+id/edtHours"
+            <RadioButton
+                android:id="@+id/rdBtn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-        </LinearLayout>
+                android:text="2" />
+
+            <RadioButton
+                android:id="@+id/rdBtn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3" />
+
+            <RadioButton
+                android:id="@+id/rdBtn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4" />
+
+            <RadioButton
+                android:id="@+id/rdBtn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5" />
+        </RadioGroup>
 
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="confirm"
-            android:text="Confirm" />
+            android:text="Submit" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

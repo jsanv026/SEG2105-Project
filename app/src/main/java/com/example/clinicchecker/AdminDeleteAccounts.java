@@ -48,7 +48,7 @@ public class AdminDeleteAccounts extends AppCompatActivity {
                 LinearLayout llBtn = (LinearLayout) findViewById(R.id.layoutButtons);
                 llBtn.addView(myButton);
                 Space spc = new Space(this);
-                spc.setMinimumHeight(230);
+                spc.setMinimumHeight(210);
                 llBtn.addView(spc);
 
                 myButton.setOnClickListener(new View.OnClickListener() {

@@ -33,17 +33,24 @@ public class PatientServicesSearch extends AppCompatActivity {
 
             if (services.getServiceArr()[i] != null && services.getServiceArr()[i].equals(service)) {
 
+                System.out.println("pepegas1");
+
                 for (int j = 0; j < clinics.length; j++) {
 
                     if (clinics[j] != null) {
 
+                        System.out.println("pepegas2");
+
                         for (int k = 0; k < clinics[j].getServices().getServiceArr().length; k++) {
 
-                            if (clinics[j].getServices().getServiceArr()[k] != null && service.getServiceName().equals(clinics[j].getServices().getServiceArr()[k])) {
+                            if (clinics[j].getServices().getServiceArr()[k] != null) { System.out.println("pepegas3 " + clinics[j].getServices().getServiceArr()[k].getServiceName() + " and " + service.getServiceName()); }
+
+                            if (clinics[j].getServices().getServiceArr()[k] != null && service.getServiceName().equals(clinics[j].getServices().getServiceArr()[k].getServiceName())) {
 
                                 final TextView tmpTxtView = new TextView(this);
                                 tmpTxtView.setClickable(true);
-                                tmpTxtView.append("o --- " + clinics[j].getClinicName());
+                                tmpTxtView.append("o " + clinics[j].getClinicName());
+                                tmpTxtView.setTextSize(20);
                                 llClinics.addView(tmpTxtView);
                                 Space spc = new Space(this);
                                 spc.setMinimumHeight(30);
